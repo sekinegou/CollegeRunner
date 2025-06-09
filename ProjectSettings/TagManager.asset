@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Road
+  - Intelli
+  - Skill
+  - Commu
   layers:
   - Default
   - TransparentFX
