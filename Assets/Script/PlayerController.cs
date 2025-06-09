@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isJump;
     public bool isGoal = false;
+    public bool isMove = false;
 
     [SerializeField] private TextController textController;
     [SerializeField] private GameObject Goal;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (textController.isCountFinish == true && transform.position.z < Goal.transform.position.z + 3)
         {
             playerMove();
+            isMove = true;
         }
         if(transform.position.z >= Goal.transform.position.z)
         {
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(posVelocity * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isJump == true)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isJump == true)
         {
             //jumpVelocity = 50.0f;
             //transform.Translate(0, jumpVelocity, 0);
@@ -70,20 +72,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "IntelliItem")
+        if (other.gameObject.tag == "Intelli")
         {
             Destroy(other.gameObject);
             statusController.intelli += 10;
+            statusController.stress += 10;
         }
-        if (other.gameObject.name == "SkillItem")
+        if (other.gameObject.tag == "Skill")
         {
             Destroy(other.gameObject);
             statusController.skill += 10;
+            statusController.stress += 10;
         }
-        if (other.gameObject.name == "CommuItem")
+        if (other.gameObject.tag == "Commu")
         {
             Destroy(other.gameObject);
             statusController.commu += 10;
+            statusController.stress += 10;
         }
     }
 }
