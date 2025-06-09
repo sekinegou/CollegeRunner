@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class StatusController : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
+    public int stress = 0;
+    public int intelli = 0;
+    public int skill = 0;
+    public int commu = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, playerController.transform.position.z - 3.7f);
+        
     }
 }
