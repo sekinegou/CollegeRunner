@@ -8,6 +8,9 @@ TagManager:
   - Intelli
   - Skill
   - Commu
+  - Beer
+  - Switch
+  - Phone
   layers:
   - Default
   - TransparentFX
