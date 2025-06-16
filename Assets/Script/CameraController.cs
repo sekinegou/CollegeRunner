@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     {
         if(playerController.isMove == true && playerController.isGoal == false)
         {
-            transform.Translate(0, 0, 7.0f * Time.deltaTime, Space.World);
+            transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
         }
         //transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z - 3.7f);
     }
