@@ -33,6 +33,22 @@ public class StatusController : MonoBehaviour
     private Color normalColor = new Color32(255, 150, 70, 255);
     private Color overColor = new Color32(255, 70, 70, 255);
 
+    private static StatusController instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
