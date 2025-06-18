@@ -19,21 +19,27 @@ public class SliderController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillValue;
     [SerializeField] private TextMeshProUGUI commuValue;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        // é©ìÆÇ≈StatusControllerÇå©Ç¬ÇØÇÈ
+        if (statusController == null)
+        {
+            statusController = FindObjectOfType<StatusController>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        intelliSlider.value = statusController.intelli;
-        skillSlider.value = statusController.skill;
-        commuSlider.value = statusController.commu;
+        // statusControllerÇ™nullÇ≈Ç»Ç¢Ç∆Ç´ÇæÇØèàóù
+        if (statusController != null)
+        {
+            intelliSlider.value = statusController.intelli;
+            skillSlider.value = statusController.skill;
+            commuSlider.value = statusController.commu;
 
-        intelliValue.text = statusController.intelli.ToString();
-        skillValue.text =  statusController.skill.ToString();
-        commuValue.text = statusController.commu.ToString();
+            intelliValue.text = statusController.intelli.ToString();
+            skillValue.text = statusController.skill.ToString();
+            commuValue.text = statusController.commu.ToString();
+        }
     }
 }
