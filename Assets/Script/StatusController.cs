@@ -27,6 +27,7 @@ public class StatusController : MonoBehaviour
     public TextMeshProUGUI commuPoint;
 
     public bool stressOver = false;
+    public bool stresszero;
     private Image stressImage;
 
     private Color normalColor = new Color32(255, 150, 70, 255);
@@ -81,16 +82,23 @@ public class StatusController : MonoBehaviour
             Invoke("commuPointEnabled", 2.0f);
         }
 
-        if(stress > 100)
+        if (stresszero)
+        {
+            stresszero = false;
+        }
+
+        if (stress <= 0 && stressOver)
+        {
+            //Debug.Log("not");
+            stresszero = true;
+            stressImage.color = normalColor;
+            stressOver = false;
+        }
+
+        if (stress >= 100)
         {
             stressOver = true;
             stressImage.color = overColor;
-
-            if (stress <= 0)
-            {
-                stressOver = false;
-                stressImage.color = normalColor;
-            }
         }
 
         stressSlider.value = stress;
