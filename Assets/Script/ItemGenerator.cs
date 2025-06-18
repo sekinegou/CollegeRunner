@@ -10,19 +10,25 @@ public class ItemGenerator : MonoBehaviour
     [SerializeField] private GameObject beerPrefab;
     [SerializeField] private GameObject switchPrefab;
     [SerializeField] private GameObject phonePrefab;*/
+
+    //[SerializeField] StatusController statusController;
+
     [SerializeField] private GameObject[] item;
 
     [SerializeField] private GameObject player;
     private int playerz;
 
     [SerializeField] private GameObject goal;
+    [SerializeField] private GameObject road;
 
     private float[] posx = { -1.2f, 0, 1.2f };
     private float[] posy = { 0, 2 };
     private float[] posz = { 5, 10, 15, 20 };
+    //private int[] rot = {}
     private int itemNumber;
 
     private int generatePos = 20;
+    private int roadPos = 10;
 
     /*private struct ItemPos
     {
@@ -37,6 +43,15 @@ public class ItemGenerator : MonoBehaviour
         ItemCreate(0);
         ItemCreate(20);
         ItemCreate(40);
+        ItemCreate(60);
+
+        Instantiate(road, new Vector3(0, -0.9f, 10), Quaternion.identity);
+        Instantiate(road, new Vector3(0, -0.9f, 20), Quaternion.identity);
+        Instantiate(road, new Vector3(0, -0.9f, 30), Quaternion.identity);
+        Instantiate(road, new Vector3(0, -0.9f, 40), Quaternion.identity);
+        Instantiate(road, new Vector3(0, -0.9f, 50), Quaternion.identity);
+        Instantiate(road, new Vector3(0, -0.9f, 60), Quaternion.identity);
+        Instantiate(road, new Vector3(0, -0.9f, 70), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -45,9 +60,20 @@ public class ItemGenerator : MonoBehaviour
         playerz = (int)player.transform.position.z;
         if (playerz >= 20 && playerz >= generatePos && playerz <= goal.transform.position.z - 60)
         {
-            ItemCreate((int)playerz + 40);
+            /*if (statusController.stresszero)
+            {
+                statusController.stresszero = false;
+            }*/
+            ItemCreate((int)playerz + 60);
             generatePos += 20;
-            Debug.Log(playerz);
+            //Debug.Log(playerz);
+        }
+
+        if (playerz >= 20 && playerz >= roadPos && playerz <= goal.transform.position.z - 60)
+        {
+            Instantiate(road, new Vector3(0, -0.9f, playerz + 60), Quaternion.identity);
+            roadPos += 10;
+            //Debug.Log(playerz);
         }
     }
 

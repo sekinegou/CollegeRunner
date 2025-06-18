@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Road2"){
+        if(collision.gameObject.tag == "Road"){
             isJump = true;
             //Debug.Log("rr");
         }
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             statusController.intelli += 10;
-            statusController.stress += 50;
+            statusController.stress += 10;
             statusController.intelliPoint.text = "+10";
             statusController.stressPoint.text = "+10";
             statusController.intelliPoint.enabled = true;
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             statusController.skill += 10;
-            statusController.stress += 50;
+            statusController.stress += 10;
             statusController.skillPoint.text = "+10";
             statusController.stressPoint.text = "+10";
             statusController.skillPoint.enabled = true;
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             statusController.commu += 10;
-            statusController.stress += 50;
+            statusController.stress += 10;
             statusController.commuPoint.text = "+10";
             statusController.stressPoint.text = "+10";
             statusController.commuPoint.enabled = true;
