@@ -58,7 +58,7 @@ public class ItemGenerator : MonoBehaviour
     void Update()
     {
         playerz = (int)player.transform.position.z;
-        if (playerz >= 20 && playerz >= generatePos && playerz <= goal.transform.position.z - 60)
+        if (playerz >= 20 && playerz >= generatePos && playerz <= goal.transform.position.z - 80)
         {
             /*if (statusController.stresszero)
             {
