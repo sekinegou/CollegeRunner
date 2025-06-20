@@ -3424,13 +3424,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9080b443dbce5c047bb201336ddeae85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVelocity: 500
+  jumpVelocity: 570
   moveVelocity: 10
   isGoal: 0
   isMove: 0
   textController: {fileID: 1412696450}
   goal: {fileID: 668401792}
   statusController: {fileID: 870141342}
+  moveTime: 0.2
 --- !u!65 &1817314410
 BoxCollider:
   m_ObjectHideFlags: 0
