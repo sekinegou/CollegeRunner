@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject goal;
     [SerializeField] private StatusController statusController;
 
+    private bool left = false;
+    private bool right = false;
+
+    private float time = 0;
+    [SerializeField] private float moveTime = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,17 +46,42 @@ public class PlayerController : MonoBehaviour
         {
             isGoal = true;
         }
+
+        time += Time.deltaTime;
     }
 
     void playerMove()
     {
-        if (Input.GetKey(KeyCode.A) && isGoal != true)
+        if(transform.position.x == -1.2f)
         {
-            transform.Translate(-posVelocity * Time.deltaTime, 0, 0);
+            left = true;
+            //Debug.Log("l");
         }
-        if (Input.GetKey(KeyCode.D) && isGoal != true)
+        else
         {
-            transform.Translate(posVelocity * Time.deltaTime, 0, 0);
+            left = false;
+            //Debug.Log("nl");
+        }
+        if (transform.position.x == 1.2f)
+        {
+            right = true;
+            //Debug.Log("r");
+        }
+        else
+        {
+            right = false;
+            //Debug.Log("nr");
+        }
+
+        if (Input.GetKeyDown(KeyCode.A) && !isGoal && !left && isJump && time > moveTime)
+        {
+            transform.Translate(-1.2f, 0, 0);
+            time = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.D) && !isGoal && !right && isJump && time > moveTime)
+        {
+            transform.Translate(1.2f, 0, 0);
+            time = 0;
         }
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isJump == true)
         {
