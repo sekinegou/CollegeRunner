@@ -13,6 +13,6 @@ public class button_game_start_c : MonoBehaviour
 
     void Osu()
     {
-        //SceneManager.LoadScene("GameScene"); // 実際のシーン名に合わせてください
+        SceneManager.LoadScene("GameScene"); // 実際のシーン名に合わせてください
     }
 }
