@@ -20,6 +20,7 @@ public class ItemGenerator : MonoBehaviour
 
     [SerializeField] private GameObject goal;
     [SerializeField] private GameObject road;
+    [SerializeField] private GameObject wall;
 
     private float[] posx = { -1.2f, 0, 1.2f };
     private float[] posy = { 0, 2 };
@@ -29,6 +30,7 @@ public class ItemGenerator : MonoBehaviour
 
     private int generatePos = 20;
     private int roadPos = 10;
+    private int wallPos = 35;
 
     /*private struct ItemPos
     {
@@ -52,6 +54,11 @@ public class ItemGenerator : MonoBehaviour
         Instantiate(road, new Vector3(0, -0.9f, 50), Quaternion.identity);
         Instantiate(road, new Vector3(0, -0.9f, 60), Quaternion.identity);
         Instantiate(road, new Vector3(0, -0.9f, 70), Quaternion.identity);
+
+        Instantiate(wall, new Vector3(0, -1.5f, 20), Quaternion.identity);
+        Instantiate(wall, new Vector3(0, -1.5f, 45), Quaternion.identity);
+        Instantiate(wall, new Vector3(0, -1.5f, 70), Quaternion.identity);
+        Instantiate(wall, new Vector3(0, -1.5f, 95), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -74,6 +81,13 @@ public class ItemGenerator : MonoBehaviour
             Instantiate(road, new Vector3(0, -0.9f, playerz + 60), Quaternion.identity);
             roadPos += 10;
             //Debug.Log(playerz);
+        }
+
+        if (playerz >= 20 && playerz >= wallPos && playerz <= goal.transform.position.z - 60)
+        {
+            Instantiate(wall, new Vector3(0, -1.5f, playerz + 80), Quaternion.identity);
+            wallPos += 25;
+            Debug.Log(playerz);
         }
     }
 
@@ -106,7 +120,7 @@ public class ItemGenerator : MonoBehaviour
 
             itemNumber = Random.Range(0, item.Length);
 
-            Instantiate(item[itemNumber], posxyz[xyz]/*new Vector3(posxyz[xyz].x, posxyz[xyz].y, posxyz[xyz].z + n)*/, Quaternion.identity);
+            Instantiate(item[itemNumber], posxyz[xyz], item[itemNumber].transform.rotation);
             posxyz.RemoveAt(xyz);
         }
     }
