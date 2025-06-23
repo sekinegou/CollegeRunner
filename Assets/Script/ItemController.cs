@@ -81,7 +81,7 @@ public class ItemController : MonoBehaviour
         {
             Destroy(gameObject);
             itemNumber = Random.Range(0, badItem.Length);
-            Instantiate(badItem[itemNumber], transform.position, Quaternion.identity);
+            Instantiate(badItem[itemNumber], transform.position, badItem[itemNumber].transform.rotation);
         }
         /*if (tag == "Skill")
         {
@@ -103,10 +103,9 @@ public class ItemController : MonoBehaviour
     {
         if(Random.Range(0, 2) == 0)
         {
-
             Destroy(gameObject);
             itemNumber = Random.Range(0, goodItem.Length);
-            Instantiate(goodItem[itemNumber], transform.position, Quaternion.identity);
+            Instantiate(goodItem[itemNumber], transform.position, goodItem[itemNumber].transform.rotation);
         }
         //Debug.Log("normal");
         /*if (good == "intelli")
