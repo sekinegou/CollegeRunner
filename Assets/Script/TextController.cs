@@ -7,11 +7,15 @@ using UnityEngine.UI;
 public class TextController : MonoBehaviour
 {
     public TextMeshProUGUI countDown;
+    [SerializeField] private TextMeshProUGUI distanceText;
+
     private float time = 0;
 
     public bool isCountFinish = false;
 
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject goal;
+    private int distance;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +43,14 @@ public class TextController : MonoBehaviour
         {
             countDown.text = "Goal";
             countDown.enabled = true;
+            distanceText.text = "ÉSÅ[ÉãÇ‹Ç≈\n0m";
         }
+        else
+        {
+            distance = (int)(goal.transform.position.z - playerController.transform.position.z);
+            distanceText.text = "ÉSÅ[ÉãÇ‹Ç≈\n" + distance.ToString() + "m";
+        }
+
         time += Time.deltaTime;
     }
 }
