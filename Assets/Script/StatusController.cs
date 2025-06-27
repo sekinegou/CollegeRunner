@@ -11,6 +11,16 @@ public class StatusController : MonoBehaviour
     public int skill = 0;
     public int commu = 0;
 
+    public int stressChange = 0;
+    public int intelliChange = 0;
+    public int skillChange = 0;
+    public int commuChange = 0;
+
+    public float stresstime = 0;
+    public float intellitime = 0;
+    public float skilltime = 0;
+    public float commutime = 0;
+   
     [SerializeField] private Slider stressSlider;
     [SerializeField] private Slider intelliSlider;
     [SerializeField] private Slider skillSlider;
@@ -81,21 +91,116 @@ public class StatusController : MonoBehaviour
             commu = 0;
         }
 
-        if(stressPoint.enabled == true)
+        /*if(stressChange != 0)
         {
-            Invoke("stressPointEnabled", 2.0f);
+            
+            stresstime = 0.3f;
+            
+            //Invoke("stressPointEnabled", 2.0f);
         }
-        if(intelliPoint.enabled == true)
+
+        if (intelliChange != 0)
         {
-            Invoke("intelliPointEnabled", 2.0f);
+            
+            intellitime = 0.3f;
+            
+            //Invoke("stressPointEnabled", 2.0f);
         }
-        if (skillPoint.enabled == true)
+
+        if (skillChange != 0)
         {
-            Invoke("skillPointEnabled", 2.0f);
+            if (skillChange > 0)
+            {
+                skillPoint.text = "+" + skillChange.ToString();
+            }
+            else
+            {
+                skillPoint.text = skillChange.ToString();
+            }
+            skillPoint.enabled = true;
+            skilltime = 0.3f;
+            
+            //Invoke("stressPointEnabled", 2.0f);
         }
-        if (commuPoint.enabled == true)
+
+        if (commuChange != 0)
         {
-            Invoke("commuPointEnabled", 2.0f);
+            
+            commutime = 0.3f;
+            
+            //Invoke("stressPointEnabled", 2.0f);
+        }*/
+
+        if (stresstime < 0)
+        {
+            stressPoint.enabled = false;
+            stressChange = 0;
+        }
+        else
+        {
+            if (stressChange > 0)
+            {
+                stressPoint.text = "+" + stressChange.ToString();
+            }
+            else
+            {
+                stressPoint.text = stressChange.ToString();
+            }
+            stressPoint.enabled = true;
+        }
+
+        if (intellitime < 0)
+        {
+            intelliPoint.enabled = false;
+            intelliChange = 0;
+        }
+        else
+        {
+            if (intelliChange > 0)
+            {
+                intelliPoint.text = "+" + intelliChange.ToString();
+            }
+            else
+            {
+                intelliPoint.text = intelliChange.ToString();
+            }
+            intelliPoint.enabled = true;
+        }
+
+        if (skilltime < 0)
+        {
+            skillPoint.enabled = false;
+            skillChange = 0;
+        }
+        else
+        {
+            if (skillChange > 0)
+            {
+                skillPoint.text = "+" + skillChange.ToString();
+            }
+            else
+            {
+                skillPoint.text = skillChange.ToString();
+            }
+            skillPoint.enabled = true;
+        }
+
+        if (commutime < 0)
+        {
+            commuPoint.enabled = false;
+            commuChange = 0;
+        }
+        else
+        {
+            if (commuChange > 0)
+            {
+                commuPoint.text = "+" + commuChange.ToString();
+            }
+            else
+            {
+                commuPoint.text = commuChange.ToString();
+            }
+            commuPoint.enabled = true;
         }
 
         if (stresszero)
@@ -126,9 +231,15 @@ public class StatusController : MonoBehaviour
         intelliValue.text = intelli.ToString();
         skillValue.text = skill.ToString();
         commuValue.text = commu.ToString();
+
+        stresstime -= Time.deltaTime;
+        intellitime -= Time.deltaTime;
+        skilltime -= Time.deltaTime;
+        commutime -= Time.deltaTime;
+        //Debug.Log(stresstime);
     }
 
-    void stressPointEnabled()
+    /*void stressPointEnabled()
     {
         stressPoint.enabled = false;
     }
@@ -143,5 +254,5 @@ public class StatusController : MonoBehaviour
     void commuPointEnabled()
     {
         commuPoint.enabled = false;
-    }
+    }*/
 }
