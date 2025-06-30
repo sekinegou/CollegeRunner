@@ -31,10 +31,10 @@ public class StatusController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillValue;
     [SerializeField] private TextMeshProUGUI commuValue;
 
-    public TextMeshProUGUI stressPoint;
-    public TextMeshProUGUI intelliPoint;
-    public TextMeshProUGUI skillPoint;
-    public TextMeshProUGUI commuPoint;
+    [SerializeField] private TextMeshProUGUI stressPoint;
+    [SerializeField] private TextMeshProUGUI intelliPoint;
+    [SerializeField] private TextMeshProUGUI skillPoint;
+    [SerializeField] private TextMeshProUGUI commuPoint;
 
     public bool stressOver = false;
     public bool stresszero;
@@ -42,6 +42,8 @@ public class StatusController : MonoBehaviour
 
     private Color normalColor = new Color32(255, 150, 70, 255);
     private Color overColor = new Color32(255, 70, 70, 255);
+
+    public int year = 1;
 
     private static StatusController instance;
 

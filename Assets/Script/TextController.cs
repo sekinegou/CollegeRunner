@@ -14,6 +14,7 @@ public class TextController : MonoBehaviour
     public bool isCountFinish = false;
 
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private StatusController statusController;
     [SerializeField] private GameObject goal;
     private int distance;
 
@@ -43,12 +44,12 @@ public class TextController : MonoBehaviour
         {
             countDown.text = "Goal";
             countDown.enabled = true;
-            distanceText.text = "ゴールまで\n0m";
+            distanceText.text = statusController.year + "年終了まで\n0m";
         }
         else
         {
             distance = (int)(goal.transform.position.z - playerController.transform.position.z);
-            distanceText.text = "ゴールまで\n" + distance.ToString() + "m";
+            distanceText.text = statusController.year + "年終了まで\n" + distance.ToString() + "m";
         }
 
         time += Time.deltaTime;

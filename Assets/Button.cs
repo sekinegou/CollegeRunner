@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
+
+    [SerializeField] private SliderController sliderController;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,14 @@ public class Button : MonoBehaviour
 
     public void Go_boss()
     {
-        SceneManager.LoadScene("BossScene");
+        if(sliderController.year < 4)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("BossScene");
+        }
+        
     }
 }
