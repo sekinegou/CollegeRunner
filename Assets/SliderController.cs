@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
-    [SerializeField] private StatusController statusController;
+    private StatusController statusController;
 
     [SerializeField] private Slider intelliSlider;
     [SerializeField] private Slider skillSlider;
@@ -19,12 +19,21 @@ public class SliderController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillValue;
     [SerializeField] private TextMeshProUGUI commuValue;
 
+    public int year;
+
     void Start()
     {
         // Ž©“®‚ÅStatusController‚ðŒ©‚Â‚¯‚é
         if (statusController == null)
         {
             statusController = FindObjectOfType<StatusController>();
+        }
+
+        if(statusController != null)
+        {
+            statusController.year++;
+            year = statusController.year;
+            Debug.Log(year);
         }
     }
 
