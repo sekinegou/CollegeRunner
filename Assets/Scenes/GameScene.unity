@@ -2365,7 +2365,7 @@ MonoBehaviour:
   isMove: 0
   textController: {fileID: 1412696450}
   goal: {fileID: 668401792}
-  statusController: {fileID: 870141342}
+  statusController: {fileID: 870141344}
   moveTime: 0.2
 --- !u!54 &675319429
 Rigidbody:
@@ -2474,8 +2474,8 @@ GameObject:
   m_Component:
   - component: {fileID: 870141341}
   - component: {fileID: 870141340}
-  - component: {fileID: 870141342}
   - component: {fileID: 870141343}
+  - component: {fileID: 870141344}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -2526,7 +2526,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &870141342
+--- !u!114 &870141343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870141339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b604105234be34785279988ec2b3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 675319428}
+  statusController: {fileID: 0}
+--- !u!114 &870141344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2542,6 +2556,14 @@ MonoBehaviour:
   intelli: 0
   skill: 0
   commu: 0
+  stressChange: 0
+  intelliChange: 0
+  skillChange: 0
+  commuChange: 0
+  stresstime: 0
+  intellitime: 0
+  skilltime: 0
+  commutime: 0
   stressSlider: {fileID: 1023500933}
   intelliSlider: {fileID: 642238296}
   skillSlider: {fileID: 1656391520}
@@ -2556,19 +2578,7 @@ MonoBehaviour:
   commuPoint: {fileID: 1686818281}
   stressOver: 0
   stresszero: 0
---- !u!114 &870141343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870141339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6b604105234be34785279988ec2b3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 675319428}
+  year: 1
 --- !u!1 &992360083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2960,7 +2970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6280\u80FD"
+  m_text: "\u6280\u8853"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6ade1ab3ec4f2746bee952313f65a6d, type: 2}
   m_sharedMaterial: {fileID: 8097438890694488367, guid: f6ade1ab3ec4f2746bee952313f65a6d,
@@ -3228,7 +3238,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -100, y: -50}
-  m_SizeDelta: {x: 350, y: 50}
+  m_SizeDelta: {x: 360, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1274062230
 MonoBehaviour:
@@ -3250,7 +3260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30B4\u30FC\u30EB\u307E\u3067\n0m"
+  m_text: "1\u5E74\u7D42\u4E86\u307E\u3067\n0m"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6ade1ab3ec4f2746bee952313f65a6d, type: 2}
   m_sharedMaterial: {fileID: 8097438890694488367, guid: f6ade1ab3ec4f2746bee952313f65a6d,
@@ -3590,6 +3600,7 @@ MonoBehaviour:
   distanceText: {fileID: 1274062230}
   isCountFinish: 0
   playerController: {fileID: 675319428}
+  statusController: {fileID: 870141344}
   goal: {fileID: 668401792}
 --- !u!1 &1450371188
 GameObject:
