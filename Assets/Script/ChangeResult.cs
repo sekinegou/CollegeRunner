@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ChangeResult : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
+    [SerializeField] StatusController statusController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class ChangeResult : MonoBehaviour
     {
         if (playerController.isGoal)
         {
+            
             Invoke("changeScene", 1.5f);
         }
     }
