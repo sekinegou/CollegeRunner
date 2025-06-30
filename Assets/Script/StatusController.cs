@@ -224,6 +224,8 @@ public class StatusController : MonoBehaviour
             stressImage.color = overColor;
         }
 
+        
+
         stressSlider.value = stress;
         intelliSlider.value = intelli - ((intelli / 100) * 100);
         skillSlider.value = skill - ((skill / 100) * 100);
