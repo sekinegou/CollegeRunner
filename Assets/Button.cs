@@ -21,12 +21,18 @@ public class Button : MonoBehaviour
 
     public void Go_boss()
     {
-        if(sliderController.year < 4)
+        /*OverSceneStatus.stressStatus = 0;
+        OverSceneStatus.intelliStatus = 0;
+        OverSceneStatus.skillStatus = 0;
+        OverSceneStatus.commuStatus = 0;*/
+
+        if(OverSceneStatus.year < 4)
         {
             SceneManager.LoadScene("GameScene");
         }
         else
         {
+            OverSceneStatus.isBoss = true;
             SceneManager.LoadScene("BossScene");
         }
         
