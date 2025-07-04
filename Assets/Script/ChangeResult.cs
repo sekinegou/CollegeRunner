@@ -19,8 +19,14 @@ public class ChangeResult : MonoBehaviour
     {
         if (playerController.isGoal)
         {
-            
-            Invoke("changeScene", 1.5f);
+            OverSceneStatus.stressStatus = statusController.stress;
+            OverSceneStatus.intelliStatus = statusController.intelli;
+            OverSceneStatus.skillStatus = statusController.skill;
+            OverSceneStatus.commuStatus = statusController.commu;
+
+            OverSceneStatus.year = statusController.year;
+
+            Invoke("changeScene", 0.5f);
         }
     }
 

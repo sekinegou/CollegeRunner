@@ -43,9 +43,9 @@ public class StatusController : MonoBehaviour
     private Color normalColor = new Color32(255, 150, 70, 255);
     private Color overColor = new Color32(255, 70, 70, 255);
 
-    public int year = 1;
+    public int year;
 
-    private static StatusController instance;
+    /*private static StatusController instance;
 
     void Awake()
     {
@@ -58,7 +58,7 @@ public class StatusController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 
 
     // Start is called before the first frame update
@@ -71,6 +71,8 @@ public class StatusController : MonoBehaviour
         commuPoint.enabled = false;
 
         stressImage = stressSlider.fillRect.GetComponent<Image>();
+
+        year = OverSceneStatus.year;
     }
 
     // Update is called once per frame
@@ -227,9 +229,9 @@ public class StatusController : MonoBehaviour
         
 
         stressSlider.value = stress;
-        intelliSlider.value = intelli - ((intelli / 100) * 100);
-        skillSlider.value = skill - ((skill / 100) * 100);
-        commuSlider.value = commu - ((commu / 100) * 100);
+        intelliSlider.value = intelli;
+        skillSlider.value = skill;
+        commuSlider.value = commu;
 
         stressValue.text = stress.ToString();
         intelliValue.text = intelli.ToString();
