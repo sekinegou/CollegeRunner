@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject boss;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class CameraController : MonoBehaviour
         if(playerController.isMove == true && playerController.isGoal == false)
         {
             transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
+            boss.transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
         }
         //transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z - 3.7f);
     }

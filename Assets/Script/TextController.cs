@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TextController : MonoBehaviour
 {
     public TextMeshProUGUI countDown;
-    [SerializeField] private TextMeshProUGUI distanceText;
+    [SerializeField] private TextMeshProUGUI distanceOrTimeText;
 
     private float time = 0;
 
@@ -17,6 +17,8 @@ public class TextController : MonoBehaviour
     [SerializeField] private StatusController statusController;
     [SerializeField] private GameObject goal;
     private int distance;
+    private float bossTime = 60;
+    private int min;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +46,18 @@ public class TextController : MonoBehaviour
         {
             countDown.text = "Goal";
             countDown.enabled = true;
-            distanceText.text = statusController.year + "年終了まで\n0m";
+            distanceOrTimeText.text = statusController.year + "年終了まで\n0m";
         }
         else
         {
             distance = (int)(goal.transform.position.z - playerController.transform.position.z);
-            distanceText.text = statusController.year + "年終了まで\n" + distance.ToString() + "m";
+            distanceOrTimeText.text = statusController.year + "年終了まで\n" + distance.ToString() + "m";
         }
 
         time += Time.deltaTime;
+
+        bossTime -= Time.deltaTime;
+        min = (int)(bossTime / 60);
+        distanceOrTimeText.text = min + ":" + (bossTime - min * 60).ToString("00");
     }
 }
