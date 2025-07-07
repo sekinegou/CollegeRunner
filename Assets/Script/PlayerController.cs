@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    private const float posVelocity = 8.0f;
+    //private const float posVelocity = 8.0f;
     [SerializeField] private int jumpVelocity = 300;
     public int moveVelocity = 10;
 
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isGoal = false;
     public bool isMove = false;
 
-    [SerializeField] private TextController textController;
+    [SerializeField] protected TextController textController;
     [SerializeField] private GameObject goal;
     [SerializeField] private StatusController statusController;
 
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private float time = 0;
     [SerializeField] private float moveTime = 0.2f;
 
-    private Animator animator = null;
+    protected Animator animator = null;
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +37,9 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3)
+        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && textController.isTimeFinish)
         {
             playerMove();
             isMove = true;
@@ -50,15 +49,14 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("move", false);
         }
-        if(transform.position.z >= goal.transform.position.z)
+
+        if (transform.position.z >= goal.transform.position.z || textController.isTimeFinish)
         {
             isGoal = true;
         }
-
-        time += Time.deltaTime;
     }
 
-    void playerMove()
+    protected void playerMove()
     {
         if(transform.position.x < -1)
         {
@@ -99,7 +97,7 @@ public class PlayerController : MonoBehaviour
             isJump = false;
         }
         transform.Translate(0, 0/*jumpVelocity *= 0.1f*/, moveVelocity * Time.deltaTime);
-        
+        time += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
