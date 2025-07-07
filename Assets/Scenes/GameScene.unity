@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896ef7607271c4b4fb551dc0b2d65e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 675319428}
+  playerController: {fileID: 675319433}
 --- !u!1 &387784541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1374,7 @@ GameObject:
   - component: {fileID: 668401796}
   - component: {fileID: 668401795}
   - component: {fileID: 668401794}
+  - component: {fileID: 668401797}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -1440,12 +1441,25 @@ Transform:
   m_GameObject: {fileID: 668401792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1663, y: -0.5, z: 100}
+  m_LocalPosition: {x: -0.1663, y: -0.5, z: 60}
   m_LocalScale: {x: 4.400277, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668401797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668401792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12a33d03052e7740b6f49ac7a798dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 675319433}
 --- !u!1001 &675319424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2314,11 +2328,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7488598026858587226, guid: c9de92f346d13494ba560cae3f7a37f6,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 675319428}
+      addedObject: {fileID: 675319430}
     - targetCorrespondingSourceObject: {fileID: 7488598026858587226, guid: c9de92f346d13494ba560cae3f7a37f6,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 675319430}
+      addedObject: {fileID: 675319433}
   m_SourcePrefab: {fileID: 100100000, guid: c9de92f346d13494ba560cae3f7a37f6, type: 3}
 --- !u!1 &675319425 stripped
 GameObject:
@@ -2347,26 +2361,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 1.2, z: 0.8}
   m_Center: {x: 0, y: 0.65, z: 0}
---- !u!114 &675319428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 675319425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9080b443dbce5c047bb201336ddeae85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpVelocity: 570
-  moveVelocity: 10
-  isGoal: 0
-  isMove: 0
-  textController: {fileID: 1412696450}
-  goal: {fileID: 668401792}
-  statusController: {fileID: 870141344}
-  moveTime: 0.2
 --- !u!54 &675319429
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2415,6 +2409,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &675319433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675319425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9080b443dbce5c047bb201336ddeae85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpVelocity: 570
+  moveVelocity: 10
+  isGoal: 0
+  isMove: 0
+  textController: {fileID: 1412696450}
+  goal: {fileID: 668401792}
+  statusController: {fileID: 870141344}
+  moveTime: 0.2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,7 +2552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b604105234be34785279988ec2b3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 675319428}
+  playerController: {fileID: 675319433}
   statusController: {fileID: 870141344}
 --- !u!114 &870141344
 MonoBehaviour:
@@ -3215,7 +3229,7 @@ GameObject:
   - component: {fileID: 1274062231}
   - component: {fileID: 1274062230}
   m_Layer: 5
-  m_Name: Distance
+  m_Name: DeadLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3597,11 +3611,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countDown: {fileID: 1412696448}
-  distanceText: {fileID: 1274062230}
-  isCountFinish: 0
-  playerController: {fileID: 675319428}
-  statusController: {fileID: 870141344}
   goal: {fileID: 668401792}
+  cornerText: {fileID: 1274062230}
+  isCountFinish: 0
+  playerController: {fileID: 675319433}
+  statusController: {fileID: 870141344}
+  bossTime: 8
+  isTimeFinish: 0
 --- !u!1 &1450371188
 GameObject:
   m_ObjectHideFlags: 0
