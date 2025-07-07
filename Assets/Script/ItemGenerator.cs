@@ -97,7 +97,7 @@ public class ItemGenerator : MonoBehaviour
             }*/
             ItemCreate((int)playerz + 60);
             generatePos += 20;
-            Debug.Log(playerz);
+            //Debug.Log(playerz);
         }
 
         if (playerz >= 20 && playerz >= roadPos && playerz <= goal.transform.position.z - 60)

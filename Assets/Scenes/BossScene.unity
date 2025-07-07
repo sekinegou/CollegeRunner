@@ -767,7 +767,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 675319428}
-  boss: {fileID: 1831120077}
 --- !u!1 &387784541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1374,7 @@ GameObject:
   - component: {fileID: 668401796}
   - component: {fileID: 668401795}
   - component: {fileID: 668401794}
+  - component: {fileID: 668401797}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -1447,6 +1447,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668401797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668401792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12a33d03052e7740b6f49ac7a798dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
 --- !u!1001 &675319424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2364,7 +2377,7 @@ MonoBehaviour:
   moveVelocity: 10
   isGoal: 0
   isMove: 0
-  textController: {fileID: 1412696450}
+  textController: {fileID: 0}
   goal: {fileID: 668401792}
   statusController: {fileID: 870141344}
   moveTime: 0.2
@@ -3239,7 +3252,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -100, y: -50}
-  m_SizeDelta: {x: 360, y: 50}
+  m_SizeDelta: {x: 390, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1274062230
 MonoBehaviour:
@@ -3261,7 +3274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u9762\u63A5\u7D42\u4E86\u307E\u3067\n01:00"
+  m_text: "\u9762\u63A5\u7D42\u4E86\u307E\u3067\n1:05"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6ade1ab3ec4f2746bee952313f65a6d, type: 2}
   m_sharedMaterial: {fileID: 8097438890694488367, guid: f6ade1ab3ec4f2746bee952313f65a6d,
@@ -3598,11 +3611,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countDown: {fileID: 1412696448}
-  distanceOrTimeText: {fileID: 1274062230}
+  goal: {fileID: 668401792}
+  cornerText: {fileID: 1274062230}
   isCountFinish: 0
   playerController: {fileID: 675319428}
   statusController: {fileID: 870141344}
-  goal: {fileID: 668401792}
+  bossTime: 60
+  isTimeFinish: 0
 --- !u!1 &1450371188
 GameObject:
   m_ObjectHideFlags: 0
