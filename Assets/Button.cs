@@ -26,15 +26,11 @@ public class Button : MonoBehaviour
         OverSceneStatus.skillStatus = 0;
         OverSceneStatus.commuStatus = 0;*/
 
-        if(OverSceneStatus.year < 4)
-        {
-            SceneManager.LoadScene("GameScene");
-        }
-        else
+        if(OverSceneStatus.year == 4)
         {
             OverSceneStatus.isBoss = true;
-            SceneManager.LoadScene("BossScene");
         }
-        
+        SceneManager.LoadScene("GameScene");
+
     }
 }
