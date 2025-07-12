@@ -14,7 +14,9 @@ public class ItemGenerator : MonoBehaviour
     //[SerializeField] StatusController statusController;
 
     [SerializeField] private GameObject[] item;
+    [SerializeField] private GameObject[] bossItem;
     [SerializeField] private GameObject[] house;
+    [SerializeField] private GameObject[] boss;
 
     [SerializeField] private GameObject player;
     private int playerz;
@@ -38,7 +40,7 @@ public class ItemGenerator : MonoBehaviour
     private float rightInterval = -2;
 
     private float[] houseWidth = { 2.75f, 2.3f, 1.75f };
-    private float[] housePosy = { 2.3f, 2.7f, 2 };
+    private float[] housePosy = { 2.3f, 2.33f, 2.33f };
     private int houseNumber;
 
     /*private struct ItemPos
@@ -51,6 +53,11 @@ public class ItemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (OverSceneStatus.isBoss)
+        {
+            Instantiate(boss[OverSceneStatus.bossType], new Vector3(0, 0.2f, 40), boss[OverSceneStatus.bossType].transform.rotation);
+        }
+
         for (int i = 0; i < 80; i += 20)
         {
             ItemCreate(i);
@@ -100,7 +107,7 @@ public class ItemGenerator : MonoBehaviour
             //Debug.Log(playerz);
         }
 
-        if (playerz >= 20 && playerz >= roadPos && playerz <= goal.transform.position.z - 60)
+        if (playerz >= 20 && playerz >= roadPos && playerz <= goal.transform.position.z - 70)
         {
             Instantiate(road, new Vector3(0, -0.9f, playerz + 60), Quaternion.identity);
             roadPos += 10;
@@ -161,9 +168,17 @@ public class ItemGenerator : MonoBehaviour
             //int x = Random.Range(0, posx.Length);
             //int z = Random.Range(0, posz.Length);
 
-            itemNumber = Random.Range(0, item.Length);
+            if (!OverSceneStatus.isBoss)
+            {
+                itemNumber = Random.Range(0, item.Length);
+                Instantiate(item[itemNumber], posxyz[xyz], item[itemNumber].transform.rotation);
+            }
+            else
+            {
+                itemNumber = Random.Range(0, bossItem.Length);
+                Instantiate(bossItem[itemNumber], posxyz[xyz], bossItem[itemNumber].transform.rotation);
+            }
 
-            Instantiate(item[itemNumber], posxyz[xyz], item[itemNumber].transform.rotation);
             posxyz.RemoveAt(xyz);
         }
     }
