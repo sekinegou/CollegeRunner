@@ -11,6 +11,10 @@ TagManager:
   - Beer
   - Switch
   - Phone
+  - Boss
+  - IAttack
+  - SAttack
+  - CAttack
   layers:
   - Default
   - TransparentFX

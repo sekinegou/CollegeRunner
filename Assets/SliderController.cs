@@ -19,14 +19,6 @@ public class SliderController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillValue;
     [SerializeField] private TextMeshProUGUI commuValue;
 
-    [SerializeField] private TextMeshProUGUI intelliTotalText;
-    [SerializeField] private TextMeshProUGUI skillTotalText;
-    [SerializeField] private TextMeshProUGUI commuTotalText;
-
-    [SerializeField] private TextMeshProUGUI intelliArrow;
-    [SerializeField] private TextMeshProUGUI skillArrow;
-    [SerializeField] private TextMeshProUGUI commuArrow;
-
     public int year;
 
     private int intelli;
@@ -38,6 +30,8 @@ public class SliderController : MonoBehaviour
     private int commuTotal;
 
     private bool isStatusDirection = false;
+
+    private float time = 0;
     void Start()
     {
         /*// é©ìÆÇ≈StatusControllerÇå©Ç¬ÇØÇÈ
@@ -57,17 +51,6 @@ public class SliderController : MonoBehaviour
         skill = OverSceneStatus.skillStatus;
         commu = OverSceneStatus.commuStatus;
 
-        intelliSlider.value = intelli;
-        skillSlider.value = skill;
-        commuSlider.value = commu;
-
-        intelliValue.text = intelli.ToString();
-        skillValue.text = skill.ToString();
-        commuValue.text = commu.ToString();
-
-        year = OverSceneStatus.year;
-        OverSceneStatus.year++;
-
         intelliTotal = OverSceneStatus.intelliTotal;
         skillTotal = OverSceneStatus.skillTotal;
         commuTotal = OverSceneStatus.commuTotal;
@@ -76,9 +59,29 @@ public class SliderController : MonoBehaviour
         OverSceneStatus.skillTotal += OverSceneStatus.skillStatus;
         OverSceneStatus.commuTotal += OverSceneStatus.commuStatus;
 
-        intelliTotalText.text = intelliTotal.ToString();
-        skillTotalText.text = skillTotal.ToString();
-        commuTotalText.text = commuTotal.ToString();
+        /*if(intelliTotal >= intelliSlider.maxValue)
+        {
+            intelliSlider.maxValue += 100;
+        }
+        if(skillTotal >= skillSlider.maxValue)
+        {
+            skillSlider.maxValue += 100;
+        }
+        if(commuTotal >= commuSlider.maxValue)
+        {
+            commuSlider.maxValue += 100;
+        }*/
+
+        intelliSlider.value = intelliTotal;
+        skillSlider.value = skillTotal;
+        commuSlider.value = commuTotal;
+
+        intelliValue.text = intelliTotal.ToString() + " Å© " + intelli.ToString();
+        skillValue.text = skillTotal.ToString() + " Å© " + skill.ToString();
+        commuValue.text = commuTotal.ToString() + " Å© " + commu.ToString();
+
+        year = OverSceneStatus.year;
+        OverSceneStatus.year++;
 
         //Invoke("StatusDirection", 0.5f);
     }
@@ -102,15 +105,26 @@ public class SliderController : MonoBehaviour
         }*/
         Invoke("StatusDirection", 0.5f);
 
-        if (isStatusDirection) Invoke("StatusDisEnable", 0.5f);
+        if (isStatusDirection)
+        {
+            
+            time += Time.deltaTime;
+            Debug.Log(time);
+            if(time > 0.02f)
+            {
+                Invoke("StatusDisEnable", 0.5f);
+                return;
+            }
+        }
+        
 
-        intelliValue.text = intelli.ToString();
-        skillValue.text = skill.ToString();
-        commuValue.text = commu.ToString();
+        intelliSlider.value = intelliTotal;
+        skillSlider.value = skillTotal;
+        commuSlider.value = commuTotal;
 
-        intelliTotalText.text = intelliTotal.ToString();
-        skillTotalText.text = skillTotal.ToString();
-        commuTotalText.text = commuTotal.ToString();
+        intelliValue.text = intelliTotal.ToString() + " Å© " + intelli.ToString();
+        skillValue.text = skillTotal.ToString() + " Å© " + skill.ToString();
+        commuValue.text = commuTotal.ToString() + " Å© " + commu.ToString();
 
         /*// statusControllerÇ™nullÇ≈Ç»Ç¢Ç∆Ç´ÇæÇØèàóù
         if (statusController != null)
@@ -149,11 +163,8 @@ public class SliderController : MonoBehaviour
 
     private void StatusDisEnable()
     {
-        intelliValue.enabled = false;
-        skillValue.enabled = false;
-        commuValue.enabled = false;
-        intelliArrow.enabled = false;
-        skillArrow.enabled = false;
-        commuArrow.enabled = false;
+        intelliValue.text = intelliTotal.ToString();
+        skillValue.text = skillTotal.ToString();
+        commuValue.text = commuTotal.ToString();
     }
 }
