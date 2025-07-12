@@ -70,7 +70,11 @@ public class TextController : MonoBehaviour
         {
             if (isCountFinish)
             {
-                bossTime -= Time.deltaTime;
+                if(bossTime >= 0)
+                {
+                    bossTime -= Time.deltaTime;
+                }
+                
                 min = (int)(bossTime / 60);
                 cornerText.text = "ñ ê⁄èIóπÇ‹Ç≈\n" + min + ":" + (bossTime % 60).ToString("00");
             }

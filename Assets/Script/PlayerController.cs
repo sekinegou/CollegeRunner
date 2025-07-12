@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && textController.isTimeFinish)
+        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && !textController.isTimeFinish)
         {
             playerMove();
             isMove = true;
