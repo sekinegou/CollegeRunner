@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class StatusController : MonoBehaviour
 {
+    [SerializeField] private BossStatus bossStatus;
+
     public int stress = 0;
     public int intelli = 0;
     public int skill = 0;
@@ -26,15 +28,21 @@ public class StatusController : MonoBehaviour
     [SerializeField] private Slider skillSlider;
     [SerializeField] private Slider commuSlider;
 
+    [SerializeField] private Slider hpSlider;
+
     [SerializeField] private TextMeshProUGUI stressValue;
     [SerializeField] private TextMeshProUGUI intelliValue;
     [SerializeField] private TextMeshProUGUI skillValue;
     [SerializeField] private TextMeshProUGUI commuValue;
 
+    [SerializeField] private TextMeshProUGUI hpValue;
+
     [SerializeField] private TextMeshProUGUI stressPoint;
     [SerializeField] private TextMeshProUGUI intelliPoint;
     [SerializeField] private TextMeshProUGUI skillPoint;
     [SerializeField] private TextMeshProUGUI commuPoint;
+
+    [SerializeField] private TextMeshProUGUI stressOrHpText;
 
     public bool stressOver = false;
     public bool stresszero;
@@ -64,6 +72,27 @@ public class StatusController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (OverSceneStatus.isBoss)
+        {
+            stressSlider.gameObject.SetActive(false);
+            stressValue.enabled = false;
+
+            stressOrHpText.text = "‰ïŽÐHP";
+
+            intelli = OverSceneStatus.intelliTotal;
+            skill = OverSceneStatus.skillTotal;
+            commu = OverSceneStatus.commuTotal;
+
+            hpSlider.maxValue = bossStatus.statuses[bossStatus.bossType].hp;
+            intelliSlider.maxValue = 300;
+            skillSlider.maxValue = 300;
+            commuSlider.maxValue = 300;
+        }
+        else
+        {
+            hpSlider.gameObject.SetActive(false);
+            hpValue.enabled = false;
+        }
         //stressSlider = GetComponent<Slider>();
         stressPoint.enabled = false;
         intelliPoint.enabled = false;
@@ -78,6 +107,12 @@ public class StatusController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (OverSceneStatus.isBoss)
+        {
+            hpSlider.value = bossStatus.statuses[bossStatus.bossType].hp;
+            hpValue.text = bossStatus.statuses[bossStatus.bossType].hp.ToString();
+        }
+
         if(stress < 0)
         {
             stress = 0;

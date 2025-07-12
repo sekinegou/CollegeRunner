@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +11,12 @@ public class ItemGenerator : MonoBehaviour
     [SerializeField] private GameObject phonePrefab;*/
 
     //[SerializeField] StatusController statusController;
+    [SerializeField] private BossStatus bossStatus;
 
     [SerializeField] private GameObject[] item;
     [SerializeField] private GameObject[] bossItem;
     [SerializeField] private GameObject[] house;
-    [SerializeField] private GameObject[] boss;
+    
 
     [SerializeField] private GameObject player;
     private int playerz;
@@ -53,9 +53,10 @@ public class ItemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(bossStatus.bossType);
         if (OverSceneStatus.isBoss)
         {
-            Instantiate(boss[OverSceneStatus.bossType], new Vector3(0, 0.2f, 40), boss[OverSceneStatus.bossType].transform.rotation);
+            Instantiate(bossStatus.boss[OverSceneStatus.bossType], new Vector3(0, 0.2f, 40), bossStatus.boss[OverSceneStatus.bossType].transform.rotation);
         }
 
         for (int i = 0; i < 80; i += 20)
@@ -175,7 +176,14 @@ public class ItemGenerator : MonoBehaviour
             }
             else
             {
-                itemNumber = Random.Range(0, bossItem.Length);
+                int probability = Random.Range(0, 100);
+                //Debug.Log(probability);
+
+                if (probability >= bossStatus.statuses[bossStatus.bossType].intelli) itemNumber = 0;
+                else if (probability >= bossStatus.statuses[bossStatus.bossType].skill) itemNumber = 1;
+                else itemNumber = 2;
+                Debug.Log(itemNumber);
+
                 Instantiate(bossItem[itemNumber], posxyz[xyz], bossItem[itemNumber].transform.rotation);
             }
 
