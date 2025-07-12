@@ -18,6 +18,7 @@ public class TextController : MonoBehaviour
 
     [SerializeField] protected PlayerController playerController;
     [SerializeField] protected StatusController statusController;
+    [SerializeField] private BossStatus bossStatus;
 
     [SerializeField] private float bossTime = 60;
     private int min;
@@ -83,6 +84,11 @@ public class TextController : MonoBehaviour
             {
                 isTimeFinish = true;
                 countDown.text = "TimeOver";
+                countDown.enabled = true;
+            }
+            if (bossStatus.isdefeat)
+            {
+                countDown.text = "Clear!!";
                 countDown.enabled = true;
             }
         }
