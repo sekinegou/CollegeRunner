@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     private PlayerController playerController;
+    private BossStatus bossStatus;
 
     //[SerializeField] private GameObject[] boss;
     // Start is called before the first frame update
@@ -16,12 +17,17 @@ public class BossController : MonoBehaviour
         }*/
 
         playerController = FindObjectOfType<PlayerController>();
+        bossStatus = FindObjectOfType<BossStatus>();
         //Debug.Log("s");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (bossStatus.isdefeat)
+        {
+            gameObject.SetActive(false);
+        }
         if (playerController.isMove == true && playerController.isGoal == false)
         {
             transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);

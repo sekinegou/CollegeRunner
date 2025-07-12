@@ -109,8 +109,8 @@ public class SliderController : MonoBehaviour
         {
             
             time += Time.deltaTime;
-            Debug.Log(time);
-            if(time > 0.02f)
+            //Debug.Log(time);
+            if(time > 0.03f)
             {
                 Invoke("StatusDisEnable", 0.5f);
                 return;

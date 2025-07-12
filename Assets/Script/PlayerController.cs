@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected TextController textController;
     [SerializeField] private GameObject goal;
     [SerializeField] private StatusController statusController;
+    [SerializeField] private BossStatus bossStatus;
 
     private bool left = false;
     private bool right = false;
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && !textController.isTimeFinish)
+        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && !textController.isTimeFinish && !bossStatus.isdefeat)
         {
             playerMove();
             isMove = true;
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("move", false);
         }
 
-        if (transform.position.z >= goal.transform.position.z || textController.isTimeFinish)
+        if (transform.position.z >= goal.transform.position.z || textController.isTimeFinish || bossStatus.isdefeat)
         {
             isGoal = true;
         }
