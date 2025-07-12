@@ -26,7 +26,7 @@ public class ChangeResult : MonoBehaviour
 
             OverSceneStatus.year = statusController.year;
 
-            Invoke("changeScene", 0.5f);
+            Invoke("changeScene", 1.5f);
         }
     }
 
