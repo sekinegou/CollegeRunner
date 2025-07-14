@@ -53,7 +53,7 @@ public class ItemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(bossStatus.bossType);
+        //Debug.Log(bossStatus.bossType);
         if (OverSceneStatus.isBoss)
         {
             Instantiate(bossStatus.boss[OverSceneStatus.bossType], new Vector3(0, 0.2f, 40), bossStatus.boss[OverSceneStatus.bossType].transform.rotation);

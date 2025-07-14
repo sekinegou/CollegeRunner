@@ -33,7 +33,7 @@ public class TextController : MonoBehaviour
         if (OverSceneStatus.isBoss)
         {
             min = (int)(bossTime / 60);
-            cornerText.text = "面接終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
+            cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
         }
     }
 
@@ -77,18 +77,18 @@ public class TextController : MonoBehaviour
                 }
                 
                 min = (int)(bossTime / 60);
-                cornerText.text = "面接終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
+                cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
             }
 
             if (bossTime <= 0)
             {
                 isTimeFinish = true;
-                countDown.text = "TimeOver";
+                countDown.text = "内定獲得失敗";
                 countDown.enabled = true;
             }
             if (bossStatus.isdefeat)
             {
-                countDown.text = "Clear!!";
+                countDown.text = "内定獲得!!";
                 countDown.enabled = true;
             }
         }
