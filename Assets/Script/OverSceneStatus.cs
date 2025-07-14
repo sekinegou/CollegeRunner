@@ -19,4 +19,6 @@ public static class OverSceneStatus
     public static bool isBoss = false;
 
     public static int bossType = 0;
+
+    public static bool isPromotion;
 }
