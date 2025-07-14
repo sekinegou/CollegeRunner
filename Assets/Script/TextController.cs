@@ -18,6 +18,7 @@ public class TextController : MonoBehaviour
 
     [SerializeField] protected PlayerController playerController;
     [SerializeField] protected StatusController statusController;
+    [SerializeField] private BossStatus bossStatus;
 
     [SerializeField] private float bossTime = 60;
     private int min;
@@ -32,7 +33,7 @@ public class TextController : MonoBehaviour
         if (OverSceneStatus.isBoss)
         {
             min = (int)(bossTime / 60);
-            cornerText.text = "面接終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
+            cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
         }
     }
 
@@ -70,15 +71,24 @@ public class TextController : MonoBehaviour
         {
             if (isCountFinish)
             {
-                bossTime -= Time.deltaTime;
+                if(bossTime >= 0)
+                {
+                    bossTime -= Time.deltaTime;
+                }
+                
                 min = (int)(bossTime / 60);
-                cornerText.text = "面接終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
+                cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
             }
 
             if (bossTime <= 0)
             {
                 isTimeFinish = true;
-                countDown.text = "TimeOver";
+                countDown.text = "内定獲得失敗";
+                countDown.enabled = true;
+            }
+            if (bossStatus.isdefeat)
+            {
+                countDown.text = "内定獲得!!";
                 countDown.enabled = true;
             }
         }

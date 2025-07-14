@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected TextController textController;
     [SerializeField] private GameObject goal;
     [SerializeField] private StatusController statusController;
+    [SerializeField] private BossStatus bossStatus;
 
     private bool left = false;
     private bool right = false;
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && textController.isTimeFinish)
+        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && !textController.isTimeFinish && !bossStatus.isdefeat)
         {
             playerMove();
             isMove = true;
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("move", false);
         }
 
-        if (transform.position.z >= goal.transform.position.z || textController.isTimeFinish)
+        if (transform.position.z >= goal.transform.position.z)
         {
             isGoal = true;
         }
@@ -95,6 +96,8 @@ public class PlayerController : MonoBehaviour
             //transform.Translate(0, jumpVelocity, 0);
             rb.AddForce(new Vector3(0, jumpVelocity, 0));
             isJump = false;
+            animator.SetBool("jump", true);
+            //animator.SetBool("move", false);
         }
         transform.Translate(0, 0/*jumpVelocity *= 0.1f*/, moveVelocity * Time.deltaTime);
         time += Time.deltaTime;
@@ -105,6 +108,8 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag == "Road"){
             isJump = true;
             //Debug.Log("rr");
+            animator.SetBool("jump", false);
+            //animator.SetBool("move", true);
         }
     }
 
