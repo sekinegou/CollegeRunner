@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("move", false);
         }
 
-        if (transform.position.z >= goal.transform.position.z || textController.isTimeFinish || bossStatus.isdefeat)
+        if (transform.position.z >= goal.transform.position.z)
         {
             isGoal = true;
         }
@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour
             //transform.Translate(0, jumpVelocity, 0);
             rb.AddForce(new Vector3(0, jumpVelocity, 0));
             isJump = false;
+            animator.SetBool("jump", true);
+            //animator.SetBool("move", false);
         }
         transform.Translate(0, 0/*jumpVelocity *= 0.1f*/, moveVelocity * Time.deltaTime);
         time += Time.deltaTime;
@@ -106,6 +108,8 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag == "Road"){
             isJump = true;
             //Debug.Log("rr");
+            animator.SetBool("jump", false);
+            //animator.SetBool("move", true);
         }
     }
 
