@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,9 +11,12 @@ public class ItemGenerator : MonoBehaviour
     [SerializeField] private GameObject phonePrefab;*/
 
     //[SerializeField] StatusController statusController;
+    [SerializeField] private BossStatus bossStatus;
 
     [SerializeField] private GameObject[] item;
+    [SerializeField] private GameObject[] bossItem;
     [SerializeField] private GameObject[] house;
+    
 
     [SerializeField] private GameObject player;
     private int playerz;
@@ -38,7 +40,7 @@ public class ItemGenerator : MonoBehaviour
     private float rightInterval = -2;
 
     private float[] houseWidth = { 2.75f, 2.3f, 1.75f };
-    private float[] housePosy = { 2.3f, 2.7f, 2 };
+    private float[] housePosy = { 2.3f, 2.33f, 2.33f };
     private int houseNumber;
 
     /*private struct ItemPos
@@ -51,6 +53,12 @@ public class ItemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log(bossStatus.bossType);
+        if (OverSceneStatus.isBoss)
+        {
+            Instantiate(bossStatus.boss[OverSceneStatus.bossType], new Vector3(0, 0.2f, 40), bossStatus.boss[OverSceneStatus.bossType].transform.rotation);
+        }
+
         for (int i = 0; i < 80; i += 20)
         {
             ItemCreate(i);
@@ -100,7 +108,7 @@ public class ItemGenerator : MonoBehaviour
             //Debug.Log(playerz);
         }
 
-        if (playerz >= 20 && playerz >= roadPos && playerz <= goal.transform.position.z - 60)
+        if (playerz >= 20 && playerz >= roadPos && playerz <= goal.transform.position.z - 70)
         {
             Instantiate(road, new Vector3(0, -0.9f, playerz + 60), Quaternion.identity);
             roadPos += 10;
@@ -161,9 +169,24 @@ public class ItemGenerator : MonoBehaviour
             //int x = Random.Range(0, posx.Length);
             //int z = Random.Range(0, posz.Length);
 
-            itemNumber = Random.Range(0, item.Length);
+            if (!OverSceneStatus.isBoss)
+            {
+                itemNumber = Random.Range(0, item.Length);
+                Instantiate(item[itemNumber], posxyz[xyz], item[itemNumber].transform.rotation);
+            }
+            else
+            {
+                int probability = Random.Range(0, 100);
+                //Debug.Log(probability);
 
-            Instantiate(item[itemNumber], posxyz[xyz], item[itemNumber].transform.rotation);
+                if (probability >= bossStatus.statuses[bossStatus.bossType].intelli) itemNumber = 0;
+                else if (probability >= bossStatus.statuses[bossStatus.bossType].skill) itemNumber = 1;
+                else itemNumber = 2;
+                Debug.Log(itemNumber);
+
+                Instantiate(bossItem[itemNumber], posxyz[xyz], bossItem[itemNumber].transform.rotation);
+            }
+
             posxyz.RemoveAt(xyz);
         }
     }

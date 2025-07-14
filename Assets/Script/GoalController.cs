@@ -14,9 +14,9 @@ public class GoalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OverSceneStatus.isBoss && playerController.isMove == true)
+        if (OverSceneStatus.isBoss && playerController.isMove == true && playerController.isGoal == false)
         {
-            transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime);
+            transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
         }
     }
 }
