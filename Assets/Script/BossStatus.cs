@@ -72,7 +72,7 @@ public class BossStatus : MonoBehaviour
     {
         bossType = OverSceneStatus.bossType;
         //boss = new GameObject[bossCount];
-        Debug.Log(bossType);
+        //Debug.Log(bossType);
         
     }
 

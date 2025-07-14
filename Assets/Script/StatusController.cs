@@ -24,9 +24,9 @@ public class StatusController : MonoBehaviour
     public float commutime = 0;
    
     [SerializeField] private Slider stressSlider;
-    [SerializeField] private Slider intelliSlider;
-    [SerializeField] private Slider skillSlider;
-    [SerializeField] private Slider commuSlider;
+    public Slider intelliSlider;
+    public Slider skillSlider;
+    public Slider commuSlider;
 
     [SerializeField] private Slider hpSlider;
 
