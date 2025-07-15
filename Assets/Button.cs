@@ -25,12 +25,19 @@ public class Button : MonoBehaviour
         OverSceneStatus.intelliStatus = 0;
         OverSceneStatus.skillStatus = 0;
         OverSceneStatus.commuStatus = 0;*/
-
-        if(OverSceneStatus.year == 4)
+        if (!OverSceneStatus.isPromotion)
         {
-            OverSceneStatus.isBoss = true;
+            SceneManager.LoadScene("Title");
         }
-        SceneManager.LoadScene("GameScene");
+        else
+        {
+            if (OverSceneStatus.year == 4)
+            {
+                OverSceneStatus.isBoss = true;
+            }
+            SceneManager.LoadScene("GameScene");
+        }
+        
 
     }
 }

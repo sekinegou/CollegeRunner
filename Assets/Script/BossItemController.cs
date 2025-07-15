@@ -59,14 +59,23 @@ public class BossItemController : MonoBehaviour
             if (tag == "IAttack")
             {
                 bossStatus.statuses[bossStatus.bossType].hp -= statusController.intelli;
+                statusController.hpChange -= statusController.intelli;
+
+                statusController.hptime = 0.5f;
             }
             if (tag == "SAttack")
             {
                 bossStatus.statuses[bossStatus.bossType].hp -= statusController.skill;
+                statusController.hpChange -= statusController.skill;
+
+                statusController.hptime = 0.5f;
             }
             if (tag == "CAttack")
             {
                 bossStatus.statuses[bossStatus.bossType].hp -= statusController.commu;
+                statusController.hpChange -= statusController.commu;
+
+                statusController.hptime = 0.5f;
             }
             Destroy(gameObject);
         }
