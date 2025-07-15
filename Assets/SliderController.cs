@@ -19,6 +19,8 @@ public class SliderController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillValue;
     [SerializeField] private TextMeshProUGUI commuValue;
 
+    [SerializeField] private TextMeshProUGUI sinkyuu;
+
     public int year;
 
     private int intelli;
@@ -59,6 +61,9 @@ public class SliderController : MonoBehaviour
         OverSceneStatus.skillTotal += OverSceneStatus.skillStatus;
         OverSceneStatus.commuTotal += OverSceneStatus.commuStatus;
 
+        year = OverSceneStatus.year;
+        OverSceneStatus.year++;
+
         /*if(intelliTotal >= intelliSlider.maxValue)
         {
             intelliSlider.maxValue += 100;
@@ -72,6 +77,16 @@ public class SliderController : MonoBehaviour
             commuSlider.maxValue += 100;
         }*/
 
+        if (OverSceneStatus.isPromotion)
+        {
+            sinkyuu.text = "êiãâ!!";
+
+        }
+        else
+        {
+            sinkyuu.text = "óØîN";
+        }
+
         intelliSlider.value = intelliTotal;
         skillSlider.value = skillTotal;
         commuSlider.value = commuTotal;
@@ -80,8 +95,7 @@ public class SliderController : MonoBehaviour
         skillValue.text = skillTotal.ToString() + " Å© " + skill.ToString();
         commuValue.text = commuTotal.ToString() + " Å© " + commu.ToString();
 
-        year = OverSceneStatus.year;
-        OverSceneStatus.year++;
+        
 
         //Invoke("StatusDirection", 0.5f);
     }
