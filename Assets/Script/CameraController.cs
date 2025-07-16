@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private BossStatus bossStatus;
     //[SerializeField] private GameObject boss;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerController.isMove == true && playerController.isGoal == false)
+        if(playerController.isMove && !playerController.isGoal && !bossStatus.isdefeat)
         {
             transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
             //boss.transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
