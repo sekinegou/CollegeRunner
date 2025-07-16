@@ -874,9 +874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'RESULT
-
-'
+  m_text: "\u7D50\u679C\u767A\u8868"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 956185485467a304297496ee821121d4, type: 2}
   m_sharedMaterial: {fileID: 5427602567612895978, guid: 956185485467a304297496ee821121d4,
