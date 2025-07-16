@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
-    private GameObject player;
+    //private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < player.transform.position.z - 20)
+        if (transform.position.z < Camera.main.transform.position.z - 20)
         {
             Destroy(gameObject);
         }

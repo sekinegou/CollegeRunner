@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossItemController : MonoBehaviour
 {
-    private GameObject player;
     private GameObject boss;
     private float speed = 50;
     private Vector3 bosPos;
@@ -17,7 +16,7 @@ public class BossItemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //camera = GameObject.FindWithTag("MainCamera");
         boss = GameObject.FindWithTag("Boss");
 
         bossStatus = FindObjectOfType<BossStatus>();
@@ -27,10 +26,11 @@ public class BossItemController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < player.transform.position.z - 3)
+        if (transform.position.z < Camera.main.transform.position.z - 3)
         {
             Destroy(gameObject);
         }
+        
 
         if (isMove)
         {

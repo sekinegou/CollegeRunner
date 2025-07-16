@@ -21,4 +21,17 @@ public static class OverSceneStatus
     public static int bossType = 0;
 
     public static bool isPromotion;
+
+    public static int bestTime = 0;
+
+    public static void ResetStatus()
+    {
+        stressTotal = 0;
+        intelliTotal = 0;
+        skillTotal = 0;
+        commuTotal = 0;
+
+        year = 1;
+        isBoss = false;
+    }
 }

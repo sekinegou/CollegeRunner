@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && !textController.isTimeFinish && !bossStatus.isdefeat)
+        if (textController.isCountFinish && transform.position.z < goal.transform.position.z + 3 && !textController.isTimeFinish)
         {
             playerMove();
             isMove = true;
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            isMove = false;
             animator.SetBool("move", false);
         }
 
