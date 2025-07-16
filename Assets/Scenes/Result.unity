@@ -1584,6 +1584,7 @@ MonoBehaviour:
   intelliValue: {fileID: 2085833375}
   skillValue: {fileID: 935788812}
   commuValue: {fileID: 1378462063}
+  sinkyuu: {fileID: 165826645}
   year: 0
 --- !u!4 &1063285960
 Transform:
