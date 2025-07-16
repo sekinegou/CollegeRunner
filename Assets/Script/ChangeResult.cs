@@ -55,13 +55,15 @@ public class ChangeResult : MonoBehaviour
 
         if (textController.isTimeFinish)
         {
-            sceneName = "Title";
+            OverSceneStatus.isEmployment = false;
+            sceneName = "LastResult";
             Invoke("changeScene", 3f);
         }
 
         if (bossStatus.isdefeat)
         {
-            sceneName = "Title";
+            OverSceneStatus.isEmployment = true;
+            sceneName = "LastResult";
             Invoke("changeScene", 3f);
         }
     }

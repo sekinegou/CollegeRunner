@@ -13,6 +13,14 @@ public class button_game_start_c : MonoBehaviour
 
     void Osu()
     {
-        SceneManager.LoadScene("GameScene"); // 実際のシーン名に合わせてください
+        if(OverSceneStatus.bestTime == 0)
+        {
+            SceneManager.LoadScene("BossIntro");
+        }
+        else
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        
     }
 }
