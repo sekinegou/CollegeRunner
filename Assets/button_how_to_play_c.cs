@@ -13,6 +13,6 @@ public class button_how_to_play_c : MonoBehaviour
 
     void HowToPlay()
     {
-        //SceneManager.LoadScene("How_to_play");
+        SceneManager.LoadScene("HowToPlay");
     }
 }
