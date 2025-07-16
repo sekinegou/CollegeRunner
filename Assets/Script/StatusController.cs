@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class StatusController : MonoBehaviour
 {
     [SerializeField] private BossStatus bossStatus;
+    [SerializeField] private PromotionController promotionController;
 
     public int stress = 0;
     public int intelli = 0;
@@ -18,10 +19,14 @@ public class StatusController : MonoBehaviour
     public int skillChange = 0;
     public int commuChange = 0;
 
+    public int hpChange = 0;
+
     public float stresstime = 0;
     public float intellitime = 0;
     public float skilltime = 0;
     public float commutime = 0;
+
+    public float hptime = 0;
    
     [SerializeField] private Slider stressSlider;
     public Slider intelliSlider;
@@ -41,6 +46,8 @@ public class StatusController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI intelliPoint;
     [SerializeField] private TextMeshProUGUI skillPoint;
     [SerializeField] private TextMeshProUGUI commuPoint;
+
+    [SerializeField] private TextMeshProUGUI hpPoint;
 
     [SerializeField] private TextMeshProUGUI stressOrHpText;
 
@@ -92,12 +99,15 @@ public class StatusController : MonoBehaviour
         {
             hpSlider.gameObject.SetActive(false);
             hpValue.enabled = false;
+            hpPoint.enabled = false;
         }
         //stressSlider = GetComponent<Slider>();
         stressPoint.enabled = false;
         intelliPoint.enabled = false;
         skillPoint.enabled = false;
         commuPoint.enabled = false;
+
+        hpPoint.enabled = false;
 
         stressImage = stressSlider.fillRect.GetComponent<Image>();
 
@@ -242,6 +252,18 @@ public class StatusController : MonoBehaviour
             commuPoint.enabled = true;
         }
 
+        if(hptime < 0)
+        {
+            hpPoint.enabled = false;
+            hpChange = 0;
+        }
+        else
+        {
+            hpPoint.text = hpChange.ToString();
+
+            hpPoint.enabled = true;
+        }
+
         if (stresszero)
         {
             stresszero = false;
@@ -269,14 +291,16 @@ public class StatusController : MonoBehaviour
         commuSlider.value = commu;
 
         stressValue.text = stress.ToString();
-        intelliValue.text = intelli.ToString();
-        skillValue.text = skill.ToString();
-        commuValue.text = commu.ToString();
+        intelliValue.text = intelli.ToString() + "/" + promotionController.intelliPromo.ToString();
+        skillValue.text = skill.ToString() + "/" + promotionController.skillPromo.ToString();
+        commuValue.text = commu.ToString() + "/" + promotionController.commuPromo.ToString();
 
         stresstime -= Time.deltaTime;
         intellitime -= Time.deltaTime;
         skilltime -= Time.deltaTime;
         commutime -= Time.deltaTime;
+
+        hptime -= Time.deltaTime;
         //Debug.Log(stresstime);
     }
 
