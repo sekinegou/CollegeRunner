@@ -21,6 +21,8 @@ public class TextController : MonoBehaviour
     [SerializeField] private BossStatus bossStatus;
 
     [SerializeField] private float bossTime = 60;
+    private float lapseTime;
+    private int clearTime;
     private int min;
 
     public bool isTimeFinish = false;
@@ -28,12 +30,13 @@ public class TextController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lapseTime = bossTime;
         countDown.text = "3";
 
         if (OverSceneStatus.isBoss)
         {
-            min = (int)(bossTime / 60);
-            cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
+            min = (int)(lapseTime / 60);
+            cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (lapseTime % 60).ToString("00");
         }
     }
 
@@ -69,18 +72,18 @@ public class TextController : MonoBehaviour
         }
         else
         {
-            if (isCountFinish)
+            if (isCountFinish && !bossStatus.isdefeat)
             {
-                if(bossTime >= 0)
+                if(lapseTime >= 0)
                 {
-                    bossTime -= Time.deltaTime;
+                    lapseTime -= Time.deltaTime;
                 }
                 
-                min = (int)(bossTime / 60);
-                cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (bossTime % 60).ToString("00");
+                min = (int)(lapseTime / 60);
+                cornerText.text = statusController.year + "年終了まで\n" + min + ":" + (lapseTime % 60).ToString("00");
             }
 
-            if (bossTime <= 0)
+            if (lapseTime <= 0)
             {
                 isTimeFinish = true;
                 countDown.text = "内定獲得失敗";
@@ -90,6 +93,13 @@ public class TextController : MonoBehaviour
             {
                 countDown.text = "内定獲得!!";
                 countDown.enabled = true;
+
+                clearTime = (int)(bossTime - lapseTime);
+
+                if(clearTime < OverSceneStatus.bestTime || OverSceneStatus.bestTime == 0)
+                {
+                    OverSceneStatus.bestTime = clearTime;
+                }
             }
         }
 

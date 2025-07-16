@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Button : MonoBehaviour
 {
 
-    [SerializeField] private SliderController sliderController;
+    //[SerializeField] private SliderController sliderController;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +27,7 @@ public class Button : MonoBehaviour
         OverSceneStatus.commuStatus = 0;*/
         if (!OverSceneStatus.isPromotion)
         {
+            OverSceneStatus.ResetStatus();
             SceneManager.LoadScene("Title");
         }
         else

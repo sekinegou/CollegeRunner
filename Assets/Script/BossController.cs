@@ -6,6 +6,7 @@ public class BossController : MonoBehaviour
 {
     private PlayerController playerController;
     private BossStatus bossStatus;
+    private TextController textController;
 
     //[SerializeField] private GameObject[] boss;
     // Start is called before the first frame update
@@ -18,17 +19,18 @@ public class BossController : MonoBehaviour
 
         playerController = FindObjectOfType<PlayerController>();
         bossStatus = FindObjectOfType<BossStatus>();
+        textController = FindObjectOfType<TextController>();
         //Debug.Log("s");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (bossStatus.isdefeat)
+        /*if (bossStatus.isdefeat)
         {
             gameObject.SetActive(false);
-        }
-        if (playerController.isMove == true && playerController.isGoal == false)
+        }*/
+        if ((playerController.isMove || textController.isTimeFinish) && !bossStatus.isdefeat)
         {
             transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
         }

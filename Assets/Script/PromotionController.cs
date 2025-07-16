@@ -13,7 +13,7 @@ public class PromotionController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillStar;
     [SerializeField] private TextMeshProUGUI commuStar;
 
-    private int[] yearPromo = { 3, 4, 5 };
+    private int[] yearPromo = { 1, 1, 1 };
     public int intelliPromo;
     public int skillPromo;
     public int commuPromo;

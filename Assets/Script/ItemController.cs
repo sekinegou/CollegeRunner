@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    private GameObject player;
+    //private GameObject player;
     private StatusController statusController;
 
     /*[SerializeField] private GameObject intelliPrefab;
@@ -23,14 +23,14 @@ public class ItemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
         statusController = FindObjectOfType<StatusController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.z < player.transform.position.z - 3)
+        if(transform.position.z < Camera.main.transform.position.z - 3)
         {
             Destroy(gameObject);
         }
