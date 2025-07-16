@@ -18,11 +18,13 @@ public static class OverSceneStatus
 
     public static bool isBoss = false;
 
-    public static int bossType = 0;
+    public static int bossType;
 
     public static bool isPromotion;
 
     public static int bestTime = 0;
+
+    public static bool isEmployment;
 
     public static void ResetStatus()
     {

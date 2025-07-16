@@ -76,24 +76,44 @@ public class SliderController : MonoBehaviour
         {
             commuSlider.maxValue += 100;
         }*/
-
-        if (OverSceneStatus.isPromotion)
+        if (OverSceneStatus.isBoss)
         {
-            sinkyuu.text = "i‹‰!!";
+            if (OverSceneStatus.isEmployment)
+            {
+                sinkyuu.text = "AE¬Œ÷";
+            }
+            else
+            {
+                sinkyuu.text = "AEŽ¸”s";
+            }
 
+            intelliValue.text = intelliTotal.ToString();
+            skillValue.text = skillTotal.ToString();
+            commuValue.text = commuTotal.ToString();
         }
         else
         {
-            sinkyuu.text = "—¯”N";
+            if (OverSceneStatus.isPromotion)
+            {
+                sinkyuu.text = "i‹‰!!";
+
+            }
+            else
+            {
+                sinkyuu.text = "—¯”N";
+            }
+
+            intelliValue.text = intelliTotal.ToString() + " © " + intelli.ToString();
+            skillValue.text = skillTotal.ToString() + " © " + skill.ToString();
+            commuValue.text = commuTotal.ToString() + " © " + commu.ToString();
         }
+        
 
         intelliSlider.value = intelliTotal;
         skillSlider.value = skillTotal;
         commuSlider.value = commuTotal;
 
-        intelliValue.text = intelliTotal.ToString() + " © " + intelli.ToString();
-        skillValue.text = skillTotal.ToString() + " © " + skill.ToString();
-        commuValue.text = commuTotal.ToString() + " © " + commu.ToString();
+        
 
         
 
@@ -102,6 +122,7 @@ public class SliderController : MonoBehaviour
 
     void Update()
     {
+        if(OverSceneStatus.isBoss) return;
         /*if (intelli > 0)
         {
             intelli--;

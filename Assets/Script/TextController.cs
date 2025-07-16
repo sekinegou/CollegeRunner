@@ -91,7 +91,7 @@ public class TextController : MonoBehaviour
             }
             if (bossStatus.isdefeat)
             {
-                countDown.text = "“à’èŠl“¾!!";
+                countDown.text = "“à’èŠl“¾";
                 countDown.enabled = true;
 
                 clearTime = (int)(bossTime - lapseTime);

@@ -25,7 +25,7 @@ public class Button : MonoBehaviour
         OverSceneStatus.intelliStatus = 0;
         OverSceneStatus.skillStatus = 0;
         OverSceneStatus.commuStatus = 0;*/
-        if (!OverSceneStatus.isPromotion)
+        if (!OverSceneStatus.isPromotion || OverSceneStatus.isBoss)
         {
             OverSceneStatus.ResetStatus();
             SceneManager.LoadScene("Title");
@@ -35,8 +35,13 @@ public class Button : MonoBehaviour
             if (OverSceneStatus.year == 4)
             {
                 OverSceneStatus.isBoss = true;
+                SceneManager.LoadScene("BossSelect");
             }
-            SceneManager.LoadScene("GameScene");
+            else
+            {
+                SceneManager.LoadScene("GameScene");
+            }
+            
         }
         
 
