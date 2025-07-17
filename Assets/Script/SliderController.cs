@@ -122,7 +122,7 @@ public class SliderController : MonoBehaviour
 
     void Update()
     {
-        if(OverSceneStatus.isBoss) return;
+        if(OverSceneStatus.isBoss || OverSceneStatus.returnTitle) return;
         /*if (intelli > 0)
         {
             intelli--;

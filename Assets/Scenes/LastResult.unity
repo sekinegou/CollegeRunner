@@ -1578,6 +1578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c7297f86cf98c45823f38d4a5ac3e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 1138738115}
   intelliSlider: {fileID: 1785981488}
   skillSlider: {fileID: 991631584}
   commuSlider: {fileID: 766636461}
@@ -1689,6 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d7b0ea320ea7549aa248e8c25df6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  returnTitle: 0
 --- !u!114 &1138738116
 MonoBehaviour:
   m_ObjectHideFlags: 0
