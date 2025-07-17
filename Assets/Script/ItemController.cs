@@ -6,6 +6,8 @@ public class ItemController : MonoBehaviour
 {
     //private GameObject player;
     private StatusController statusController;
+    private BossStatus bossStatus;
+    private GameObject goal;
 
     /*[SerializeField] private GameObject intelliPrefab;
     [SerializeField] private GameObject skillPrefab;
@@ -25,12 +27,14 @@ public class ItemController : MonoBehaviour
     {
         //player = GameObject.FindWithTag("Player");
         statusController = FindObjectOfType<StatusController>();
+        bossStatus = FindObjectOfType<BossStatus>();
+        goal = GameObject.FindWithTag("Goal");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.z < Camera.main.transform.position.z - 3)
+        if(transform.position.z < Camera.main.transform.position.z - 3 || transform.position.z > goal.transform.position.z - 2)
         {
             Destroy(gameObject);
         }

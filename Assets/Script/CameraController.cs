@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private BossStatus bossStatus;
     //[SerializeField] private GameObject boss;
     // Start is called before the first frame update
+
     void Start()
     {
         

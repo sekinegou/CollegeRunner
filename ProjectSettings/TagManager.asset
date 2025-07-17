@@ -15,6 +15,7 @@ TagManager:
   - IAttack
   - SAttack
   - CAttack
+  - Goal
   layers:
   - Default
   - TransparentFX

@@ -26,6 +26,8 @@ public static class OverSceneStatus
 
     public static bool isEmployment;
 
+    public static bool returnTitle = false;
+
     public static void ResetStatus()
     {
         stressTotal = 0;
