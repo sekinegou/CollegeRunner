@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Button : MonoBehaviour
+public class NextButton : MonoBehaviour
 {
-
     //[SerializeField] private SliderController sliderController;
     // Start is called before the first frame update
     void Start()
@@ -27,8 +26,10 @@ public class Button : MonoBehaviour
         OverSceneStatus.commuStatus = 0;*/
         if (!OverSceneStatus.isPromotion || OverSceneStatus.isBoss)
         {
+            OverSceneStatus.returnTitle = true;
             OverSceneStatus.ResetStatus();
             SceneManager.LoadScene("Title");
+            
         }
         else
         {

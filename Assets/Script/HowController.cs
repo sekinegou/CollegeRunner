@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class HowController : MonoBehaviour
 {
-    [SerializeField] private Image[] how;
+    //[SerializeField] private Image[] how;
     //private Button front;
     //private Button back;
-
+    [SerializeField] private HowToPlayItem howToPlayItem;
 
 
     private int i = 0;
@@ -18,8 +18,8 @@ public class HowController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        how[1].enabled = false;
-        how[2].enabled = false;
+        howToPlayItem.how[1].enabled = false;
+        howToPlayItem.how[2].enabled = false;
         //front = GameObject.Find("FrontButton").GetComponent<Button>();
         //back = GameObject.Find("BackButton").GetComponent<Button>();
     }
@@ -39,13 +39,13 @@ public class HowController : MonoBehaviour
 
     public void FrontPage()
     {
-        if (how[2].enabled) return;
-        for (i = 0; i < how.Length; i++)
+        if (howToPlayItem.how[2].enabled) return;
+        for (i = 0; i < howToPlayItem.how.Length; i++)
         {
-            if (how[i].enabled)
+            if (howToPlayItem.how[i].enabled)
             {
-                how[i + 1].enabled = true;
-                how[i].enabled = false;
+                howToPlayItem.how[i + 1].enabled = true;
+                howToPlayItem.how[i].enabled = false;
                 return;
             }
         }
@@ -53,13 +53,13 @@ public class HowController : MonoBehaviour
 
     public void BackPage()
     {
-        if (how[0].enabled) return;
-        for(i = 0; i < how.Length; i++)
+        if (howToPlayItem.how[0].enabled) return;
+        for(i = 0; i < howToPlayItem.how.Length; i++)
         {
-            if (how[i].enabled)
+            if (howToPlayItem.how[i].enabled)
             {
-                how[i - 1].enabled = true;
-                how[i].enabled = false;
+                howToPlayItem.how[i - 1].enabled = true;
+                howToPlayItem.how[i].enabled = false;
                 return;
             }
         } 

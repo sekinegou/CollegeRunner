@@ -13,6 +13,7 @@ public class button_game_start_c : MonoBehaviour
 
     void Osu()
     {
+        OverSceneStatus.returnTitle = false;
         if(OverSceneStatus.bestTime == 0)
         {
             SceneManager.LoadScene("BossIntro");
