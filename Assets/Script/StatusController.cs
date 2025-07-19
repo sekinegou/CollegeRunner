@@ -8,8 +8,11 @@ public class StatusController : MonoBehaviour
 {
     [SerializeField] private BossStatus bossStatus;
     [SerializeField] private PromotionController promotionController;
+    [SerializeField] private TextController textController;
+    [SerializeField] private PlayerController playerController;
 
     public int stress = 0;
+    private float stressTimer = 0;
     public int intelli = 0;
     public int skill = 0;
     public int commu = 0;
@@ -59,6 +62,9 @@ public class StatusController : MonoBehaviour
     private Color overColor = new Color32(255, 70, 70, 255);
 
     public int year;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackClip;
 
     /*private static StatusController instance;
 
@@ -264,6 +270,12 @@ public class StatusController : MonoBehaviour
             hpPoint.enabled = true;
         }
 
+        if (hptime == 0.5f)
+        {
+            audioSource.clip = attackClip;
+            audioSource.Play();
+        }
+
         if (stresszero)
         {
             stresszero = false;
@@ -281,9 +293,27 @@ public class StatusController : MonoBehaviour
         {
             stressOver = true;
             stressImage.color = overColor;
+            
         }
 
-        
+        if (textController.isCountFinish && !playerController.isGoal)
+        {
+            stressTimer += Time.deltaTime;
+            if(stressTimer >= 0.6)
+            {
+                if (stressOver)
+                {
+                    stress -= 10;
+                }
+                else
+                {
+                    stress++;
+                }
+                stressTimer = 0;
+            }
+            
+            
+        }
 
         stressSlider.value = stress;
         intelliSlider.value = intelli;

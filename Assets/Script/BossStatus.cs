@@ -7,6 +7,9 @@ public class BossStatus : MonoBehaviour
     //public int bossCount = 3;
     public GameObject[] boss;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip defeatClip;
+
     public struct Status
     {
         public int hp;
@@ -38,26 +41,28 @@ public class BossStatus : MonoBehaviour
     {
         new Status()
         {
-            hp = 1000,
-            intelli = 30,
-            skill = 15,
+            hp = 2000,
+            intelli = 40,
+            skill = 20,
         },
         new Status()
         {
-            hp = 1200,
-            intelli = 85,
-            skill = 15,
+            hp = 2000,
+            intelli = 80,
+            skill = 20,
         },
         new Status()
         {
-            hp = 1500,
-            intelli = 85,
-            skill = 70,
+            hp = 2000,
+            intelli = 80,
+            skill = 60,
         }
     };
 
     public int bossType;
     public bool isdefeat = false;
+
+    private bool isDefeatClip = true;
 
     // Start is called before the first frame update
     /*void Awake()
@@ -81,6 +86,13 @@ public class BossStatus : MonoBehaviour
     {
         if(statuses[bossType].hp <= 0)
         {
+            if (isDefeatClip)
+            {
+                audioSource.clip = defeatClip;
+                audioSource.volume = 0.2f;
+                audioSource.Play();
+                isDefeatClip = false;
+            }
             isdefeat = true;
             statuses[bossType].hp = 0;
         }

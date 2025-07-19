@@ -7,6 +7,9 @@ public class BossController : MonoBehaviour
     private PlayerController playerController;
     private BossStatus bossStatus;
     private TextController textController;
+    //private BossItemController bossItemController;
+
+    //[SerializeField] private AudioSource audioSource;
 
     //[SerializeField] private GameObject[] boss;
     // Start is called before the first frame update
@@ -20,6 +23,7 @@ public class BossController : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         bossStatus = FindObjectOfType<BossStatus>();
         textController = FindObjectOfType<TextController>();
+        //bossItemController = FindObjectOfType<BossItemController>();
         //Debug.Log("s");
     }
 
@@ -32,25 +36,17 @@ public class BossController : MonoBehaviour
         }*/
         if ((playerController.isMove || textController.isTimeFinish) && !bossStatus.isdefeat)
         {
-            transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
+            transform.Translate(0, 0, playerController.moveVelocity[OverSceneStatus.year - 1] * Time.deltaTime, Space.World);
         }
         //Debug.Log("u");
     }
 
     /*private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        if(other.gameObject.tag == "IAttack")
+        if(bossItemController.isMove && (other.gameObject.tag == "IAttack" || other.gameObject.tag == "SAttack" || other.gameObject.tag == "CAttack"))
         {
-            Destroy(other.gameObject);
+            audioSource.Play();
         }
-        if (other.gameObject.tag == "SAttack")
-        {
-            Destroy(other.gameObject);
-        }
-        if (other.gameObject.tag == "CAttack")
-        {
-            Destroy(other.gameObject);
-        }
+        
     }*/
 }

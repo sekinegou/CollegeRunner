@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     //private const float posVelocity = 8.0f;
     [SerializeField] private int jumpVelocity = 300;
-    public int moveVelocity = 10;
+    public int[] moveVelocity = { 10, 11, 12, 13 };
 
     private Rigidbody rb;
 
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject goal;
     [SerializeField] private StatusController statusController;
     [SerializeField] private BossStatus bossStatus;
+    [SerializeField] private ItemEffect itemEffect;
 
     private bool left = false;
     private bool right = false;
@@ -30,12 +31,20 @@ public class PlayerController : MonoBehaviour
 
     protected Animator animator = null;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip itemClip;
+    [SerializeField] private AudioClip goalClip;
+
+    private bool isGoalClip = true;
+
     // Start is called before the first frame update
     void Start()
     {
         UnityEngine.Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        Debug.Log(moveVelocity[OverSceneStatus.year - 1]);
     }
 
     void Update()
@@ -55,6 +64,13 @@ public class PlayerController : MonoBehaviour
         if (transform.position.z >= goal.transform.position.z)
         {
             isGoal = true;
+            if(isGoalClip)
+            {
+                audioSource.clip = goalClip;
+                audioSource.Play();
+                isGoalClip = false;
+            }
+            
         }
     }
 
@@ -99,8 +115,11 @@ public class PlayerController : MonoBehaviour
             isJump = false;
             animator.SetBool("jump", true);
             //animator.SetBool("move", false);
+
+            audioSource.clip = jumpClip;
+            audioSource.Play();
         }
-        transform.Translate(0, 0/*jumpVelocity *= 0.1f*/, moveVelocity * Time.deltaTime);
+        transform.Translate(0, 0/*jumpVelocity *= 0.1f*/, moveVelocity[OverSceneStatus.year - 1] * Time.deltaTime);
         time += Time.deltaTime;
     }
 
@@ -116,13 +135,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        audioSource.clip = itemClip;
+        audioSource.Play();
+
         if (other.gameObject.tag == "Intelli")
         {
             Destroy(other.gameObject);
-            statusController.intelli += 10;
-            statusController.stress += 10;
-            statusController.intelliChange += 10;
-            statusController.stressChange += 10;
+            statusController.intelli += itemEffect.goodIntelli;
+            statusController.stress += itemEffect.goodStress;
+            statusController.intelliChange += itemEffect.goodIntelli;
+            statusController.stressChange += itemEffect.goodStress;
 
             statusController.intellitime = 0.5f;
             statusController.stresstime = 0.5f;
@@ -135,10 +157,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Skill")
         {
             Destroy(other.gameObject);
-            statusController.skill += 10;
-            statusController.stress += 10;
-            statusController.skillChange += 10;
-            statusController.stressChange += 10;
+            statusController.skill += itemEffect.goodSkill;
+            statusController.stress += itemEffect.goodStress;
+            statusController.skillChange += itemEffect.goodSkill;
+            statusController.stressChange += itemEffect.goodStress;
 
             statusController.skilltime = 0.5f;
             statusController.stresstime = 0.5f;
@@ -151,10 +173,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Commu")
         {
             Destroy(other.gameObject);
-            statusController.commu += 10;
-            statusController.stress += 10;
-            statusController.commuChange += 10;
-            statusController.stressChange += 10;
+            statusController.commu += itemEffect.goodCommu;
+            statusController.stress += itemEffect.goodStress;
+            statusController.commuChange += itemEffect.goodCommu;
+            statusController.stressChange += itemEffect.goodStress;
 
             statusController.commutime = 0.5f;
             statusController.stresstime = 0.5f;
@@ -167,10 +189,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Beer")
         {
             Destroy(other.gameObject);
-            statusController.intelli -= 10;
-            statusController.stress -= 10;
-            statusController.intelliChange -= 10;
-            statusController.stressChange -= 10;
+            statusController.intelli -= itemEffect.badIntelli;
+            statusController.stress -= itemEffect.badStress;
+            statusController.intelliChange -= itemEffect.badIntelli;
+            statusController.stressChange -= itemEffect.badStress;
 
             statusController.intellitime = 0.5f;
             statusController.stresstime = 0.5f;
@@ -183,10 +205,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Phone")
         {
             Destroy(other.gameObject);
-            statusController.skill -= 10;
-            statusController.stress -= 10;
-            statusController.skillChange -= 10;
-            statusController.stressChange -= 10;
+            statusController.skill -= itemEffect.goodSkill;
+            statusController.stress -= itemEffect.badStress;
+            statusController.skillChange -= itemEffect.goodSkill;
+            statusController.stressChange -= itemEffect.badStress;
 
             statusController.skilltime = 0.5f;
             statusController.stresstime = 0.5f;
@@ -199,10 +221,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Switch")
         {
             Destroy(other.gameObject);
-            statusController.commu -= 10;
-            statusController.stress -= 10;
-            statusController.commuChange -= 10;
-            statusController.stressChange -= 10;
+            statusController.commu -= itemEffect.goodCommu;
+            statusController.stress -= itemEffect.badStress;
+            statusController.commuChange -= itemEffect.goodCommu;
+            statusController.stressChange -= itemEffect.badStress;
 
             statusController.commutime = 0.5f;
             statusController.stresstime = 0.5f;
