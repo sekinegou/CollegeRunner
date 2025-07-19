@@ -31,6 +31,7 @@ public class ItemGenerator : MonoBehaviour
     private float[] posy = { 0, 2 };
     private float[] posz = { 5, 10, 15, 20 };
     //private int[] rot = {}
+    private int[] itemCount = { 4, 5, 6, 6 };
 
     private int generatePos = 20;
     private int roadPos = 20;
@@ -163,7 +164,7 @@ public class ItemGenerator : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < itemCount[OverSceneStatus.year - 1]; i++)
         {
             int xyz = Random.Range(0, posxyz.Count);
             //int x = Random.Range(0, posx.Length);

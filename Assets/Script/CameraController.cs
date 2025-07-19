@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     {
         if(playerController.isMove && !playerController.isGoal && !bossStatus.isdefeat)
         {
-            transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
+            transform.Translate(0, 0, playerController.moveVelocity[OverSceneStatus.year - 1] * Time.deltaTime, Space.World);
             //boss.transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
         }
         //transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z - 3.7f);

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class NextButton : MonoBehaviour
 {
     //[SerializeField] private SliderController sliderController;
+    public bool isPush = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class NextButton : MonoBehaviour
 
     public void Go_boss()
     {
+        isPush = true;
         /*OverSceneStatus.stressStatus = 0;
         OverSceneStatus.intelliStatus = 0;
         OverSceneStatus.skillStatus = 0;

@@ -16,7 +16,7 @@ public class GoalController : MonoBehaviour
     {
         if (OverSceneStatus.isBoss && playerController.isMove == true)
         {
-            transform.Translate(0, 0, playerController.moveVelocity * Time.deltaTime, Space.World);
+            transform.Translate(0, 0, playerController.moveVelocity[OverSceneStatus.year - 1] * Time.deltaTime, Space.World);
         }
     }
 }

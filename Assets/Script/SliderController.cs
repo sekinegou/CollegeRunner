@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using Unity.Burst.Intrinsics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
     //private StatusController statusController;
+    [SerializeField] private NextButton nextButton;
 
     [SerializeField] private Slider intelliSlider;
     [SerializeField] private Slider skillSlider;
@@ -123,6 +123,21 @@ public class SliderController : MonoBehaviour
     void Update()
     {
         if(OverSceneStatus.isBoss || OverSceneStatus.returnTitle) return;
+
+        if (nextButton.isPush)
+        {
+            intelliTotal = OverSceneStatus.intelliTotal;
+            skillTotal = OverSceneStatus.skillTotal;
+            commuTotal = OverSceneStatus.commuTotal;
+
+            intelliSlider.value = intelliTotal;
+            skillSlider.value = skillTotal;
+            commuSlider.value = commuTotal;
+
+            StatusDisEnable();
+
+            return;
+        }
         /*if (intelli > 0)
         {
             intelli--;

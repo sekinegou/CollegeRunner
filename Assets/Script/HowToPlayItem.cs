@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HowToPlayItem : MonoBehaviour
 {
     public Image[] how;
-    [SerializeField] private GameObject[] item;
+    //[SerializeField] private GameObject[] item;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class HowToPlayItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (how[0].enabled)
+        /*if (how[0].enabled)
         {
             for (int i = 0; i < item.Length; i++)
             {
@@ -29,6 +29,6 @@ public class HowToPlayItem : MonoBehaviour
             {
                 item[i].SetActive(false);
             }
-        }
+        }*/
     }
 }

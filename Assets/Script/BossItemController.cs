@@ -13,6 +13,8 @@ public class BossItemController : MonoBehaviour
     private BossStatus bossStatus;
     private StatusController statusController;
 
+    [SerializeField] private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,17 +47,16 @@ public class BossItemController : MonoBehaviour
         //Debug.Log("t");
         if (other.gameObject.tag == "Player")
         {
-            
             //Debug.Log("p");
             isMove = true;
             //Vector3 current = transform.position;
-            //transform.position = Vector3.MoveTowards(transform.position, boss.transform.position, speed * Time.deltaTime);
+            //transform.position = Vector3.MoveTowards(transform.position, boss.transform.position, speed * Time.deltaTime)
         }
 
         if(isMove && other.gameObject.tag == "Boss")
         {
             //Debug.Log("b");
-
+            audioSource.Play();
             if (tag == "IAttack")
             {
                 bossStatus.statuses[bossStatus.bossType].hp -= statusController.intelli;
