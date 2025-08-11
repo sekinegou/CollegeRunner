@@ -14,6 +14,7 @@ public class BGMController : MonoBehaviour
 
     private void Awake()
     {
+        //シーン遷移後も消えないようにする
         if(instance == null)
         {
             instance = this;
@@ -25,7 +26,6 @@ public class BGMController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         bgm.clip = menu;
@@ -40,16 +40,19 @@ public class BGMController : MonoBehaviour
         
     }
 
+    //次のシーンごとにBGMを変える
     private void ChangedActiveScene(Scene current, Scene next)
     {
         if (next.name == "GameScene")
         {
+            //ボスステージの場合
             if (OverSceneStatus.isBoss)
             {
                 bgm.Stop();
                 bgm.clip = boss;
                 bgm.Play();
             }
+            //ボスステージではない場合
             else
             {
                 bgm.Stop();
