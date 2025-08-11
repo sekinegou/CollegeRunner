@@ -3337,8 +3337,8 @@ MonoBehaviour:
   moveVelocity: 0a0000000b0000000c0000000d000000
   isGoal: 0
   isMove: 0
-  textController: {fileID: 1412696450}
   goal: {fileID: 183655293}
+  textController: {fileID: 1412696450}
   statusController: {fileID: 870141344}
   bossStatus: {fileID: 870141345}
   itemEffect: {fileID: 870141347}
@@ -3782,7 +3782,7 @@ MonoBehaviour:
   - {fileID: 7370877790529895360, guid: 28aac929ac9fa9743988e8da09753c86, type: 3}
   - {fileID: 1673603130619015086, guid: 6fe726701d1c8084992b7aa72760758b, type: 3}
   audioSource: {fileID: 870141348}
-  defeatClip: {fileID: 8300000, guid: 852cddf8c64fece449362a386e35ef95, type: 3}
+  defeat: {fileID: 8300000, guid: 852cddf8c64fece449362a386e35ef95, type: 3}
   bossType: 0
   isdefeat: 0
 --- !u!114 &870141346

@@ -5,36 +5,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+//ページごとに表示するものを変える
 public class HowController : MonoBehaviour
 {
-    //[SerializeField] private Image[] how;
-    //private Button front;
-    //private Button back;
     [SerializeField] private HowToPlayItem howToPlayItem;
-
 
     private int i = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         howToPlayItem.how[1].enabled = false;
         howToPlayItem.how[2].enabled = false;
-        //front = GameObject.Find("FrontButton").GetComponent<Button>();
-        //back = GameObject.Find("BackButton").GetComponent<Button>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*if(i == 0)
-        {
-            back.enabled = false;
-        }
-        if(i == 2)
-        {
-            front.enabled = false;
-        }*/
     }
 
     public void FrontPage()
